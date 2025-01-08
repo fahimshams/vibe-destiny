@@ -16,7 +16,7 @@ export default function MoodGenerator() {
     setResults(null);
 
     try {
-      const response = await fetch('/api/generate-mood', {
+      const response = await fetch('http://127.0.0.1:5000/api/generate-mood', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mood }),

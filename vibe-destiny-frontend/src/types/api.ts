@@ -1,12 +1,11 @@
-export interface ItineraryDay {
-    day: number;
-    activities: string[];
-  }
-  
-  export interface MoodResponse {
-    moodMessage: string;
-    city: string;
-    song: string;
-    itinerary: ItineraryDay[];
-  }
-  
+export interface MoodResponse {
+
+  itinerary: {
+
+    [key: string]: string;
+
+  };
+
+  other_content: string;
+
+}
