@@ -12,33 +12,35 @@ client = OpenAI(api_key=openai_key)
 
 mood = "Sad"
 
-prompt = """
-You are a travel planner specializing in creating mood-based travel experiences. Based on the provided mood:
-
-Generate a short message describing the essence of the mood and how the suggested city aligns with it.
-Provide the following details:
-City: Suggest a city that reflects the mood.
-Song: Recommend a song that complements the mood and the city's vibe.
 
 
-Output Format:
+def generate_response(mood=mood):
 
-Mood Message: [A short, evocative message about the mood and its connection to the city.]
-City: [City Name, Country]
-Song: [Song Name by Artist]
-Itinerary:
-Based on the mood, create a detailed 3-day itinerary. The itinerary should:
+    prompt = """
+        You are a travel planner specializing in creating mood-based travel experiences. Based on the provided mood:
 
-Reflect the mood in every activity.
-Be tailored to immerse the traveler in the city's unique atmosphere and culture.
-Include meals, experiences, and leisure activities that align with the mood.
-Important: Ensure the mood is central to the suggestions and itinerary. Avoid generic or unrelated options.
+        Generate a short message describing the essence of the mood and how the suggested city aligns with it.
+        Provide the following details:
+        City: Suggest a city that reflects the mood.
+        Song: Recommend a song that complements the mood and the city's vibe.
 
-Mood: """ + mood + """
 
-"""
+        Output Format:
 
-def generate_response():
+        Mood Message: [A short, evocative message about the mood and its connection to the city.]
+        City: [City Name, Country]
+        Song: [Song Name by Artist]
+        Itinerary:
+        Based on the mood, create a detailed 3-day itinerary. The itinerary should:
+
+        Reflect the mood in every activity.
+        Be tailored to immerse the traveler in the city's unique atmosphere and culture.
+        Include meals, experiences, and leisure activities that align with the mood.
+        Important: Ensure the mood is central to the suggestions and itinerary. Avoid generic or unrelated options.
+
+        Mood: """ + mood + """
+
+        """
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
